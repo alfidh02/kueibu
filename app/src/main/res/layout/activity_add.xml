@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddActivity"
-    android:background="#FFFDF4"
+    android:background="#FEFFF1"
     android:orientation="vertical">
 
     <LinearLayout

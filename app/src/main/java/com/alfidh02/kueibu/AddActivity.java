@@ -2,6 +2,7 @@ package com.alfidh02.kueibu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -35,6 +36,7 @@ public class AddActivity extends AppCompatActivity {
                         Integer.valueOf(typeInput.getText().toString().trim()),
                         Integer.valueOf(quantityInput.getText().toString().trim()),
                         noteInput.getText().toString().trim());
+                startActivity(new Intent(AddActivity.this,MainActivity.class));
             }
         });
     }
