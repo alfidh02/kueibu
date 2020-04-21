@@ -43,38 +43,46 @@
     </LinearLayout>
 
     <EditText
+        android:id="@+id/deadlineInput"
         android:layout_margin="15dp"
         android:fontFamily="@font/poppinsregular"
         android:textSize="14sp"
-        android:hint="Tanggal Kue"
+        android:inputType="text"
+        android:hint="Tanggal Kue (deadline)"
         android:textColor="@android:color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <EditText
+        android:id="@+id/typeInput"
         android:layout_margin="15dp"
         android:fontFamily="@font/poppinsregular"
         android:textSize="14sp"
         android:hint="Jumlah Macam"
+        android:inputType="number"
         android:textColor="@android:color/black"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <EditText
+        android:id="@+id/quantityInput"
         android:layout_margin="15dp"
         android:fontFamily="@font/poppinsregular"
         android:hint="Jumlah Tampah"
         android:textColor="@android:color/black"
         android:textSize="14sp"
+        android:inputType="number"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <EditText
+        android:id="@+id/noteInput"
         android:layout_margin="15dp"
         android:fontFamily="@font/poppinsregular"
         android:hint="Catatan"
+        android:inputType="text"
         android:textColor="@android:color/black"
         android:textSize="14sp"
         android:layout_marginTop="10dp"

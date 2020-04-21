@@ -1,8 +1,10 @@
 package com.alfidh02.kueibu;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -40,5 +42,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
+    }
+
+    void addCake(String tanggal, int macam, int banyak, String catatan){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(COLUMN_DEADLINE,tanggal);
+        contentValues.put(COLUMN_TYPE,macam);
+        contentValues.put(COLUMN_QUANTITY,banyak);
+        contentValues.put(COLUMN_NOTE,catatan);
+
+        long result = db.insert(TABLE_NAME,null,contentValues);
+
+        if (result == -1) {
+            Toast.makeText(context, "Gagal", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Berhasil", Toast.LENGTH_SHORT).show();
+        }
     }
 }
