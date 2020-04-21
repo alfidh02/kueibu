@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddActivity"
+    android:background="#FFFDF4"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginBottom="30dp"
+        android:id="@+id/titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF4D29">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="30dp">
+            <ImageView
+                android:onClick="backButton"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_expand_less_black_24dp"
+                android:rotation="-90"/>
+            <TextView
+                android:layout_marginStart="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsregular"
+                android:text="Tambah Data"
+                android:textStyle="bold"
+
+                android:textSize="20sp"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <EditText
+        android:layout_margin="15dp"
+        android:fontFamily="@font/poppinsregular"
+        android:textSize="14sp"
+        android:hint="Tanggal Kue"
+        android:textColor="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_margin="15dp"
+        android:fontFamily="@font/poppinsregular"
+        android:textSize="14sp"
+        android:hint="Jumlah Macam"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_margin="15dp"
+        android:fontFamily="@font/poppinsregular"
+        android:hint="Jumlah Tampah"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_margin="15dp"
+        android:fontFamily="@font/poppinsregular"
+        android:hint="Catatan"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/poppinsmedium"
+        android:layout_marginTop="20dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/addButton"
+        android:textColor="@color/white"
+        android:text="Tambah"
+        android:background="@drawable/rounded_button"/>
+
+
+</LinearLayout>
