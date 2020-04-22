@@ -1,12 +1,10 @@
 package com.alfidh02.kueibu;
 
 import android.app.Activity;
-import android.os.Build;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import androidx.annotation.RequiresApi;
 
 public class Helper {
 
