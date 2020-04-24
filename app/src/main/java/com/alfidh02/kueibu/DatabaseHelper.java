@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -16,14 +17,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     private static final String TABLE_NAME = "data_kue";
-    private static final String COLUMN_ID = "id";
+    private static final String COLUMN_ID = "_id";
     private static final String COLUMN_DEADLINE = "kue_deadline";
     private static final String COLUMN_TYPE = "kue_macam";
     private static final String COLUMN_QUANTITY = "kue_banyak";
     private static final String COLUMN_NOTE = "kue_catatan";
 
 
-    public DatabaseHelper(@Nullable Context context) {
+    DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
@@ -73,5 +74,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor = db.rawQuery(query,null);
         }
         return cursor;
+    }
+
+//    update data
+    void updateData(String row_id, String tanggal, String macam, String banyak, String catatan){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_DEADLINE,tanggal);
+        cv.put(COLUMN_TYPE,macam);
+        cv.put(COLUMN_QUANTITY,banyak);
+        cv.put(COLUMN_NOTE,catatan);
+
+        long result = db.update(TABLE_NAME, cv,COLUMN_ID + " = ? ", new String[]{row_id}); // where id = ...
+        Log.d("DatabaseHelp", String.valueOf(result));
+
+        if (result == -1){
+            Toast.makeText(context, "Gagal update data", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Berhasil update", Toast.LENGTH_SHORT).show();
+        }
     }
 }

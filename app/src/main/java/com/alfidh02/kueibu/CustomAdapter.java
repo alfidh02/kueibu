@@ -1,5 +1,6 @@
 package com.alfidh02.kueibu;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -17,7 +18,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     private Context context;
     private ArrayList cake_id,cake_deadline,cake_type,cake_quantity,cake_note;
-    int position;
 
     public CustomAdapter(Context context, ArrayList cake_id, ArrayList cake_deadline, ArrayList cake_type, ArrayList cake_quantity, ArrayList cake_note) {
         this.context = context;
@@ -38,8 +38,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        this.position = position;
-
         holder.cakeIdText.setText(String.valueOf(cake_id.get(position)));
         holder.cakeDeadlineText.setText(String.valueOf(cake_deadline.get(position)));
         holder.cakeQuantityText.setText(String.valueOf(cake_quantity.get(position)));

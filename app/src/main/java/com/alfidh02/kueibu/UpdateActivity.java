@@ -2,6 +2,7 @@ package com.alfidh02.kueibu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -22,21 +23,30 @@ public class UpdateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        
+
         deadlineInput2 = findViewById(R.id.deadlineInput2);
         typeInput2 = findViewById(R.id.typeInput2);
         quantityInput2 = findViewById(R.id.quantityInput2);
         noteInput2 = findViewById(R.id.noteInput2);
 
         editButton = findViewById(R.id.editButton);
+//        Call this first
+        getSetIntentData();
 
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                DatabaseHelper myDB = new DatabaseHelper(UpdateActivity.this);
+                // Ini perlu, buat ngambil data dari inputan
+                deadline = deadlineInput2.getText().toString().trim();
+                type = typeInput2.getText().toString().trim();
+                quantity = quantityInput2.getText().toString().trim();
+                note = noteInput2.getText().toString().trim();
+                //        So we can use this
+                myDB.updateData(id, deadline, type, quantity, note);
+                startActivity(new Intent(UpdateActivity.this,MainActivity.class));
             }
         });
-        getSetIntentData();
     }
 
 
