@@ -1,9 +1,11 @@
 package com.alfidh02.kueibu;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     private Context context;
     private ArrayList cake_id,cake_deadline,cake_type,cake_quantity,cake_note;
+    int position;
 
     public CustomAdapter(Context context, ArrayList cake_id, ArrayList cake_deadline, ArrayList cake_type, ArrayList cake_quantity, ArrayList cake_note) {
         this.context = context;
@@ -34,12 +37,27 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+        this.position = position;
+
         holder.cakeIdText.setText(String.valueOf(cake_id.get(position)));
         holder.cakeDeadlineText.setText(String.valueOf(cake_deadline.get(position)));
         holder.cakeQuantityText.setText(String.valueOf(cake_quantity.get(position)));
         holder.cakeTypeText.setText(String.valueOf(cake_type.get(position)));
         holder.cakeNoteText.setText(String.valueOf(cake_note.get(position)));
+
+        holder.rowLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, UpdateActivity.class);
+                intent.putExtra("id",String.valueOf(cake_id.get(position)));
+                intent.putExtra("deadline",String.valueOf(cake_deadline.get(position)));
+                intent.putExtra("quantity",String.valueOf(cake_quantity.get(position)));
+                intent.putExtra("type",String.valueOf(cake_type.get(position)));
+                intent.putExtra("note",String.valueOf(cake_note.get(position)));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -49,6 +67,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
+        LinearLayout rowLayout;
         TextView cakeIdText,cakeDeadlineText,cakeQuantityText,cakeTypeText,cakeNoteText;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -58,6 +77,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             cakeQuantityText = itemView.findViewById(R.id.cakeQuantityText);
             cakeTypeText = itemView.findViewById(R.id.cakeTypeText);
             cakeNoteText = itemView.findViewById(R.id.cakeNoteText);
+            rowLayout = itemView.findViewById(R.id.rowLayout);
         }
     }
 }

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#FEFFF1"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:id="@+id/rowLayout">
 
     <RelativeLayout
         android:layout_width="wrap_content"
