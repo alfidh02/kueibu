@@ -6,13 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 public class AddActivity extends AppCompatActivity {
 
     EditText deadlineInput,typeInput,quantityInput,noteInput;
-    Button addButton;
+    RelativeLayout addButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
