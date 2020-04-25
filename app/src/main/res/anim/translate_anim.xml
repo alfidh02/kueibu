@@ -5,5 +5,6 @@
         android:fromYDelta="100%"
         android:toYDelta="0%"
         android:duration="800"/>
+<!--    from Y 100 to Y 0-->
 
 </set>

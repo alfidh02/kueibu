@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashScreen">
+    tools:context=".SplashScreen"
+    android:background="#FF4D29">
 
     <ImageView
         android:id="@+id/circleBg"
@@ -27,20 +28,9 @@
         android:layout_below="@id/circleBg"
         android:layout_centerInParent="true"
         android:layout_marginTop="20dp"
+        android:textAllCaps="true"
+        android:textStyle="bold"
         android:textSize="20sp"
-        android:textColor="@android:color/holo_red_light"/>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:src="@drawable/curve_splash"/>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:rotation="180"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/curve_splash"/>
+        android:textColor="@color/white"/>
 
 </RelativeLayout>
