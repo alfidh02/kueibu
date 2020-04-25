@@ -14,6 +14,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +29,9 @@ public class MainActivity extends AppCompatActivity {
 
     CustomAdapter customAdapter;
 
-    TextView notifText;
+    TextView textEmpty;
+
+    ImageView emptyData;
 
     DatabaseHelper databaseHelper;
     ArrayList<String> cake_id,cake_deadline,cake_type,cake_quantity,cake_note;
@@ -41,9 +44,10 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         recyclerView = findViewById(R.id.recyclerView);
+        textEmpty = findViewById(R.id.textEmpty);
+        emptyData = findViewById(R.id.emptyData);
         addData = findViewById(R.id.createData);
         deleteAll = findViewById(R.id.deleteAll);
-        notifText = findViewById(R.id.notifText);
 
         addData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,11 +73,6 @@ public class MainActivity extends AppCompatActivity {
         storeData();
 
         customAdapter = new CustomAdapter(MainActivity.this,cake_id,cake_deadline,cake_type,cake_quantity,cake_note);
-        if (customAdapter.getItemCount() != 0){
-            notifText.setVisibility(View.GONE);
-        } else {
-            notifText.setVisibility(View.VISIBLE);
-        }
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
     }
@@ -81,7 +80,9 @@ public class MainActivity extends AppCompatActivity {
     void storeData(){
         Cursor cursor = databaseHelper.readAllData();
         if (cursor.getCount() == 0){
-            Toast.makeText(this, "Tidak ada data", Toast.LENGTH_SHORT).show();
+            deleteAll.setVisibility(View.INVISIBLE);
+            emptyData.setVisibility(View.VISIBLE);
+            textEmpty.setVisibility(View.VISIBLE);
         } else {
             while (cursor.moveToNext()){
                 cake_id.add(cursor.getString(0));
@@ -90,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
                 cake_quantity.add(cursor.getString(3));
                 cake_note.add(cursor.getString(4));
             }
+            emptyData.setVisibility(View.GONE);
+            textEmpty.setVisibility(View.GONE);
+            deleteAll.setVisibility(View.VISIBLE);
         }
     }
 

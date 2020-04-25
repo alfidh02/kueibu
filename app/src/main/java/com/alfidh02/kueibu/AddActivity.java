@@ -36,6 +36,7 @@ public class AddActivity extends AppCompatActivity {
                         Integer.valueOf(quantityInput.getText().toString().trim()),
                         noteInput.getText().toString().trim());
                 startActivity(new Intent(AddActivity.this,MainActivity.class));
+                finish();
             }
         });
     }

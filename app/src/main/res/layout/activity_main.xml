@@ -44,19 +44,7 @@
         app:borderWidth="0dp"
         android:src="@drawable/ic_add"/>
 
-    <TextView
-        android:layout_marginBottom="30dp"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/notifText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:lineSpacingExtra="3dp"
-        android:text="Tambah data kue dengan klik tombol."
-        android:maxEms="7"
-        android:textAlignment="center"
-        android:fontFamily="@font/dosismedium"
-        android:textSize="20sp"/>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/deleteAll"
@@ -66,5 +54,27 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
         app:borderWidth="0dp"/>
+
+    <ImageView
+        android:id="@+id/emptyData"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_empty"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:alpha="0.5"/>
+<!--    alpha untuk visibility, sama seperti alpha pada RGBA-->
+
+    <TextView
+        android:id="@+id/textEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinsregular"
+        android:layout_below="@id/emptyData"
+        android:text="Tidak ada data."
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+
 
 </RelativeLayout>
