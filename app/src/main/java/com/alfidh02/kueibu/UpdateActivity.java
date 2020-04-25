@@ -1,9 +1,13 @@
 package com.alfidh02.kueibu;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -13,7 +17,7 @@ import android.widget.Toast;
 public class UpdateActivity extends AppCompatActivity {
 
     EditText deadlineInput2,typeInput2,quantityInput2,noteInput2;
-    RelativeLayout editButton;
+    RelativeLayout editButton,deleteButton;
 
     String id, deadline, quantity, type, note;
 
@@ -29,7 +33,9 @@ public class UpdateActivity extends AppCompatActivity {
         quantityInput2 = findViewById(R.id.quantityInput2);
         noteInput2 = findViewById(R.id.noteInput2);
 
+        deleteButton = findViewById(R.id.deleteButton);
         editButton = findViewById(R.id.editButton);
+
 //        Call this first
         getSetIntentData();
 
@@ -45,6 +51,13 @@ public class UpdateActivity extends AppCompatActivity {
                 //        So we can use this
                 myDB.updateData(id, deadline, type, quantity, note);
                 startActivity(new Intent(UpdateActivity.this,MainActivity.class));
+            }
+        });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                confirmDialog();
             }
         });
     }
@@ -75,4 +88,27 @@ public class UpdateActivity extends AppCompatActivity {
     public void backButton(View view) {
         finish();
     }
+
+    void confirmDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(" Hapus data? ");
+        builder.setMessage("Yakin ingin hapus data?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                DatabaseHelper databaseHelper = new DatabaseHelper(UpdateActivity.this);
+                databaseHelper.deleteOneRow(id);
+                startActivity(new Intent(UpdateActivity.this,MainActivity.class));
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.create().show();
+    }
+
 }

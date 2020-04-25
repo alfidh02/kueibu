@@ -1,10 +1,12 @@
 package com.alfidh02.kueibu;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -22,7 +24,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    FloatingActionButton addData;
+    FloatingActionButton addData,deleteAll;
 
     CustomAdapter customAdapter;
 
@@ -40,12 +42,20 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         addData = findViewById(R.id.createData);
+        deleteAll = findViewById(R.id.deleteAll);
         notifText = findViewById(R.id.notifText);
 
         addData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,AddActivity.class));
+            }
+        });
+
+        deleteAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                confirmDialog();
             }
         });
 
@@ -81,5 +91,27 @@ public class MainActivity extends AppCompatActivity {
                 cake_note.add(cursor.getString(4));
             }
         }
+    }
+
+    void confirmDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(" Hapus semua data? ");
+        builder.setMessage("Yakin ingin hapus semua data?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                DatabaseHelper databaseHelper = new DatabaseHelper(MainActivity.this);
+                databaseHelper.deleteAllData();
+                startActivity(new Intent(MainActivity.this,MainActivity.class));
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.create().show();
     }
 }

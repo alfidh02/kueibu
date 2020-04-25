@@ -158,7 +158,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/addButton"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/rounded_button">
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@android:color/black">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
