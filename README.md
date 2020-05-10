@@ -1,5 +1,5 @@
 # Kue Ibu
-Aplikasi CRUD dengan menggunakan SQLite, ditampilkan dengan recycler view.
+Aplikasi CRUD dengan menggunakan SQLite, ditampilkan dengan recycler view (ada animasi ketika data ditampilkan).
 
 ## Halaman antarmuka
 | | | | |
